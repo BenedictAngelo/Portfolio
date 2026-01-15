@@ -147,6 +147,18 @@ footer a {
     text-decoration: none;
 }
 
+
+footer > a {
+    font-size: 24px;
+    font-weight: 500;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+footer > a:hover {
+    color: #388E3C;
+}
+
 .socials {
     display: flex;
     gap: 14px;
