@@ -106,11 +106,13 @@ nav .links a.active{
     gap: 14px;
 }
 
-.about .left .info .buttons button{
+
+.about .left .info .buttons a,
+.about .left .info .buttons button {
     font-size: 16px;
     padding: 6px 10px;
     border-radius: 7px;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 8px;
     cursor: pointer;
