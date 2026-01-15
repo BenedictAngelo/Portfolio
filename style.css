@@ -75,7 +75,8 @@ nav {
 /* GRID */
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-flow: row;
     gap: 20px;
 }
 
@@ -177,6 +178,9 @@ footer > a:hover {
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
+    .project-grid {
+        grid-template-columns: 1fr; /* single column on mobile */
+    }
     .links {
         padding: 0 30px;
     }
