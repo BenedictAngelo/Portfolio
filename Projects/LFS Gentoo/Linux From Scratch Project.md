@@ -21,22 +21,22 @@ Learning the building blocks of installing a Linux Operating System by doing Lin
 
 - **Why Gentoo LiveGUI USB ISO?** - to meet the minimal host software system requirement of Linux from scratch, refer to: https://www.linuxfromscratch.org/lfs/view/stable/chapter02/hostreqs.html
 
-![](../../../Image%20dump/LFS%20dump/screenshot_20112025_152053.jpg)
+![](../../assets/LFS/screenshot_20112025_152053.jpg)
 
 - Choose the "LiveGUI USB image" AMDx64
 
-![](../../../Image%20dump/LFS%20dump/screenshot_27112025_093957.jpg)
+![](../../assets/LFS/screenshot_27112025_093957.jpg)
 
 - Press "New" and add profiles to the new and to be made Gentoo OS machine, source where the .ISO file was downloaded for the "ISO image" dropdown
 
-![](../../../Image%20dump/LFS%20dump/screenshot_27112025_093957.jpg)
+![](../../assets/LFS/screenshot_27112025_093957.jpg)
 
-![](../../../Image%20dump/LFS%20dump/screenshot_27112025_094509.jpg)
+![](../../assets/LFS/screenshot_27112025_094509.jpg)
 
 
 - Setup hardware allocation as indicated, I chose for it to borrow 6GB of RAM and 4 cores of my CPU, and allocated 50GB of storage disk, unchecked "Pre-allocate Full size" so it only eats storage dynamically, not all 50GB right on the go, then press finish.
 
-![](../../../Image%20dump/LFS%20dump/screenshot_20112025_153231.jpg)
+![](../../assets/LFS/screenshot_20112025_153231.jpg)
 
 - Check the "UEFI" checkbox and check "3D Acceleration" and allocate 128MB of Video Memory, hit OK.
  - Then select the Gentoo profile, and press "Start"
@@ -46,28 +46,29 @@ Learning the building blocks of installing a Linux Operating System by doing Lin
 
 #### 2.1 Remote host control SSH and version check.
 
-![](../../../Image%20dump/LFS%20dump/screenshot_27112025_095202.jpg)
-![](../../../Image%20dump/LFS%20dump/screenshot_27112025_100809.jpg)
+![](../../assets/LFS/screenshot_27112025_095202.jpg)
+
+![](../../assets/LFS/screenshot_27112025_100809.jpg)
 
 - Immediately dropped into GUI installer, press `CTRL + ALT + F1` to go into [^1]==TTY== or open the console and type `chvt 1` to access TTY 1 then use `clear` to clean the console.
 
-![](../../../Image%20dump/LFS%20dump/screenshot_27112025_103703.jpg)
+![](../../assets/LFS/screenshot_27112025_103703.jpg)
 
-![](../../../Image%20dump/LFS%20dump/screenshot_27112025_104218.jpg)
+![](../../assets/LFS/screenshot_27112025_104218.jpg)
 
 - Used `sudo passwd root` to change the password of root to just `1234` for the sake of this project, then used `su -` to go into root
 
-![](../../../Image%20dump/LFS%20dump/screenshot_27112025_110830.jpg)
+![](../../assets/LFS/screenshot_27112025_110830.jpg)
 
 - Used `rc-service sshd start` to start the ssh daemon, the used `ip a` and `ifconfig` to see the network status and the machine IP address and its listed as `10.0.2.15`
 
-![](../../../Image%20dump/LFS%20dump/screenshot_27112025_110845.jpg)
+![](../../assets/LFS/screenshot_27112025_110845.jpg)
 
-![](../../../Image%20dump/LFS%20dump/screenshot_27112025_111016.jpg)
+![](../../assets/LFS/screenshot_27112025_111016.jpg)
 
 - Then configured the device network and added a rule for ==[^3]port forwarding== so that I can connect the host and SSH into the virtualbox machine
 
-![](../../../Image%20dump/LFS%20dump/screenshot_27112025_112047.jpg)
+![](../../assets/LFS/screenshot_27112025_111016.jpg)
 
 - Then used `ssh root@127.0.0.1` or  much better to ignore the host custom console`![](../../../Image%20dump/LFS%20dump/screenshot_08122025_100145.jpg)`  now to SSH into root of the VM, it became 127.0.0.1 because of localhost port forwarding rule set earlier, then entered the password of `1234` of VM Gentoo root.
 
@@ -82,14 +83,14 @@ bash version-check.sh
 
 - Copy and paste this for softwares version check, refer to: https://www.linuxfromscratch.org/lfs/view/stable/chapter02/hostreqs.html for the script.
 
-![](../../../Image%20dump/LFS%20dump/screenshot_27112025_114950.jpg)
+![](../../assets/LFS/screenshot_27112025_111016.jpg)
 
 - Now run the script, and confirmed that everything passes and ok.
 
 ---
 #### 2.2 Disk partitioning
 
-![](../../../Image%20dump/LFS%20dump/screenshot_27112025_115925.jpg)
+![](../../assets/LFS/screenshot_27112025_111016.jpg)
 
 - Run `lsblk` to list block devices, and here I see the disk I want to partition the name `sda` with 50GB of dynamic storage I set earlier in virtualbox settings
 
@@ -97,30 +98,30 @@ bash version-check.sh
 
 - Now I typed `cfdisk /dev/sda` to see a GUI based partition editor.
 
-![](../../../Image%20dump/LFS%20dump/screenshot_08122025_100543.jpg)
+![](../../assets/LFS/screenshot_08122025_100543.jpg)
 
 - Select [^6]`gpt` by pressing enter, then choose `New`.
 - Then Partition size: 1G, for boot partition, press enter.
 
-![](../../../Image%20dump/LFS%20dump/screenshot_08122025_101820.jpg)
+![](../../assets/LFS/screenshot_08122025_101820.jpg)
 
 - It should look like this, now go to `Type`, navigate using arrow keys, select `EFI System` since I am in a UEFI.
 
-![](../../../Image%20dump/LFS%20dump/screenshot_08122025_102330.jpg)
+![](../../assets/LFS/screenshot_08122025_101820.jpg)
 
 - Now do the same for the [^7]**swap** partition, I allocated 6G for 6GB, allocating swap partition should be same amount of your RAM or double.
 
 *refer to: https://opensource.com/article/19/2/swap-space-poll*
 
-![](../../../Image%20dump/LFS%20dump/screenshot_08122025_104429.jpg)
+![](../../assets/LFS/screenshot_08122025_104429.jpg)
 
 - So far everything should look like this.
 
-![](../../../Image%20dump/LFS%20dump/screenshot_08122025_105754.jpg)
+![](../../assets/LFS/screenshot_08122025_104429.jpg)
 
 - Now for the root file system, just choose the remainder, no need to choose type, then choose `Write`, type 'yes' then `Quit`. Now were back at the terminal, then clear the space.
 
-![](../../../Image%20dump/LFS%20dump/screenshot_08122025_110156.jpg)
+![](../../assets/LFS/screenshot_08122025_110156.jpg)
 
 - type `lsblk` again to see if it is successful, it should look like this
 
@@ -128,11 +129,11 @@ bash version-check.sh
 
 **Now instead of choosing [^8]`ext4`, I will choose [^9]`btrfs` for more configuration and snapshot support.**
 
-![](../../../Image%20dump/LFS%20dump/screenshot_08122025_110859.jpg)
+![](../../assets/LFS/screenshot_08122025_110859.jpg)
 
 - I typed `mkfs.btrfs /dev/sda3` for *btrfs*, and `mkfs.ext4 [storage]` for *ext4*, but I am not going for that.
 
-![](../../../Image%20dump/LFS%20dump/screenshot_08122025_111259.jpg)
+![](../../assets/LFS/screenshot_08122025_111259.jpg)
 
 - Then `mkfs.fat -F 32 /dev/sda1` for boot, then `mkswap /dev/sda2` for swap.
 
@@ -154,7 +155,7 @@ bash version-check.sh
 *Reference: https://www.linuxfromscratch.org/lfs/view/stable/index.html *
 
 
-##### Back to [README](../../../README.md) Mainpage
+##### Back to [README](../../../BenedictAngelo/README.md) Mainpage
 
 
 

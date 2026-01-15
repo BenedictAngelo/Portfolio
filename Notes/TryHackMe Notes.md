@@ -307,19 +307,9 @@ Method: • ffuf -w namelist.txt -H "Host: FUZZ.acmeitsupport.thm" -u [http://10
 ---
 
 
-
-
-
-
-
-
-
-
-
-
 *Reference: https://tryhackme.com/room/pentestingfundamentals*
 
 
-##### Back to [README](../README.md) Mainpage
+##### Back to [README](../../BenedictAngelo/README.md) Mainpage
 
 
