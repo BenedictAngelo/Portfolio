@@ -1,0 +1,1 @@
+/home/angelo/Github\ clones/Portfolio/Projects/Programming\ exercises/Rust\ Programming/Part1_Hello_World/target/debug/Part1_Hello_World: /home/angelo/Github\ clones/Portfolio/Projects/Programming\ exercises/Rust\ Programming/Part1_Hello_World/src/main.rs

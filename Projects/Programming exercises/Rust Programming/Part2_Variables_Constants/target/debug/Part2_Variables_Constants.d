@@ -1,0 +1,1 @@
+/home/angelo/Github\ clones/Portfolio/Projects/Programming\ exercises/Rust\ Programming/Part2_Variables_Constants/target/debug/Part2_Variables_Constants: /home/angelo/Github\ clones/Portfolio/Projects/Programming\ exercises/Rust\ Programming/Part2_Variables_Constants/src/main.rs

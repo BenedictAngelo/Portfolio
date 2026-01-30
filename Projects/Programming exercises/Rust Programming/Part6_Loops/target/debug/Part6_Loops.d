@@ -1,0 +1,1 @@
+/home/angelo/Github\ clones/Portfolio/Projects/Programming\ exercises/Rust\ Programming/Part6_Loops/target/debug/Part6_Loops: /home/angelo/Github\ clones/Portfolio/Projects/Programming\ exercises/Rust\ Programming/Part6_Loops/src/main.rs
